@@ -1,0 +1,65 @@
+plugins {
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+}
+
+configurations {
+    asciidoctorExt
+}
+
+dependencies {
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // orm
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // db
+    runtimeOnly 'com.h2database:h2'
+
+    // rest docs
+    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.5.RELEASE'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-restassured:2.0.5.RELEASE'
+
+    // test
+    testImplementation 'io.rest-assured:rest-assured:4.5.1'
+
+    // module
+    implementation project(':domain')
+}
+
+ext {
+    snippetsDir = file('build/generated-snippets')
+}
+
+test {
+    useJUnitPlatform()
+    outputs.dir snippetsDir
+}
+
+task testDocument(type: Test) {
+    useJUnitPlatform()
+    filter {
+        includeTestsMatching "*.documentation.*"
+    }
+}
+
+asciidoctor {
+    inputs.dir snippetsDir
+    configurations 'asciidoctorExt'
+    dependsOn test
+}
+
+bootJar {
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'static/docs'
+    }
+}
+
+task copyDocument(type: Copy) {
+    dependsOn testDocument
+
+    from file("build/docs/asciidoc")
+    into file("src/main/resources/static/docs")
+}

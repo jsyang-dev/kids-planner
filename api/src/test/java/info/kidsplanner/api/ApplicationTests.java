@@ -1,10 +1,10 @@
-package info.kidsplanner;
+package info.kidsplanner.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class KidsPlannerApplicationTests {
+class ApplicationTests {
 
     @Test
     void contextLoads() {

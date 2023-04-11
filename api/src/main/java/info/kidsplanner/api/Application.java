@@ -1,13 +1,13 @@
-package info.kidsplanner;
+package info.kidsplanner.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KidsPlannerApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(KidsPlannerApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
