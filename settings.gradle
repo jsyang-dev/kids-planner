@@ -1,3 +1,4 @@
 rootProject.name = 'kids-planner'
+include 'config-server'
 include 'api'
 include 'domain'
