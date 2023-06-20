@@ -5,3 +5,23 @@ spring:
     active: local
   config:
     import: optional:configserver:http://localhost:8888
+
+# TODO 환경별 프로퍼티 파일 분리
+#spring:
+#  profiles:
+#    active: local
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;NON_KEYWORDS=USER
+    username: sa
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: TRACE
