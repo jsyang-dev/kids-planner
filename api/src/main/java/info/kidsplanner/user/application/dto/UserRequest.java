@@ -44,6 +44,7 @@ public class UserRequest {
                 .name(name)
                 .phone(phone)
                 .birthday(birthday)
+                .userType(userType)
                 .build();
     }
 }
