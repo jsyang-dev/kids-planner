@@ -1,8 +1,8 @@
-package info.kidsplanner.api.user.acceptance;
+package info.kidsplanner.user.acceptance;
 
-import info.kidsplanner.api.AcceptanceStep;
-import info.kidsplanner.api.user.application.dto.UserRequest;
-import info.kidsplanner.api.util.AcceptanceUtil;
+import info.kidsplanner.AcceptanceStep;
+import info.kidsplanner.user.application.dto.UserRequest;
+import info.kidsplanner.util.AcceptanceUtil;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 

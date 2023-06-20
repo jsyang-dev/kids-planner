@@ -1,7 +1,7 @@
-package info.kidsplanner.api.user.acceptance;
+package info.kidsplanner.user.acceptance;
 
-import info.kidsplanner.api.AcceptanceTest;
-import info.kidsplanner.api.user.application.dto.UserRequest;
+import info.kidsplanner.AcceptanceTest;
+import info.kidsplanner.user.application.dto.UserRequest;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import static info.kidsplanner.api.user.acceptance.UserStep.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class UserAcceptanceTest extends AcceptanceTest {
@@ -26,7 +25,7 @@ public class UserAcceptanceTest extends AcceptanceTest {
         final UserRequest userRequest = new UserRequest();
 
         // when
-        final ExtractableResponse<Response> response = 사용자_저장_요청(userRequest);
+        final ExtractableResponse<Response> response = UserStep.사용자_저장_요청(userRequest);
 
         // then
         사용자_저장됨(response);

@@ -1,4 +1,4 @@
-package info.kidsplanner.api;
+package info.kidsplanner;
 
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;

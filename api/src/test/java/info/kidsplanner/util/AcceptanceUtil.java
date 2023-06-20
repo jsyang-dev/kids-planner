@@ -1,4 +1,4 @@
-package info.kidsplanner.api.util;
+package info.kidsplanner.util;
 
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
