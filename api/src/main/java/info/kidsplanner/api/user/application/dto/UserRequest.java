@@ -1,5 +1,6 @@
 package info.kidsplanner.api.user.application.dto;
 
+import info.kidsplanner.api.user.application.ParentIdConstraint;
 import info.kidsplanner.domain.user.Child;
 import info.kidsplanner.domain.user.Parent;
 import info.kidsplanner.domain.user.UserType;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 @Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@ParentIdConstraint
 public class UserRequest {
     @NotBlank
     @Email
