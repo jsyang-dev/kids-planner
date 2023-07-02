@@ -1,7 +1,7 @@
 package info.kidsplanner.api.user.ui;
 
 import info.kidsplanner.api.user.application.UserService;
-import info.kidsplanner.user.application.dto.UserRequest;
+import info.kidsplanner.api.user.application.dto.UserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

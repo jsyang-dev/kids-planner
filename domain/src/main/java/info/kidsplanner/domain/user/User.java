@@ -1,24 +1,28 @@
 package info.kidsplanner.domain.user;
 
+import info.kidsplanner.domain.common.BaseEntity;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import java.time.LocalDate;
 
-// TODO 부모, 자녀 클래스 분리
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "userType")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User {
+public abstract class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,8 +46,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    @Builder
-    private User(String email, String password, String name, String phone, LocalDate birthday, UserType userType) {
+    protected User(String email, String password, String name, String phone, LocalDate birthday, UserType userType) {
         this.email = email;
         this.password = password;
         this.name = name;
