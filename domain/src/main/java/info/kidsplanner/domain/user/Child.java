@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,7 +19,8 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Child extends User {
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
     private Parent parent;
 
     @Builder
@@ -26,12 +29,12 @@ public class Child extends User {
     }
 
     public void changeParent(Parent parent) {
-        final List<Child> childrenOfParent = this.parent.getChildren();
+        final List<Child> childrenOfNewParent = parent.getChildren();
         if (Objects.nonNull(this.parent)) {
-            childrenOfParent.remove(this);
+            childrenOfNewParent.remove(this);
         }
 
         this.parent = parent;
-        childrenOfParent.add(this);
+        childrenOfNewParent.add(this);
     }
 }

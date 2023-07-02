@@ -2,6 +2,7 @@ package info.kidsplanner.api.user.ui;
 
 import info.kidsplanner.api.user.application.UserService;
 import info.kidsplanner.api.user.application.dto.UserRequest;
+import info.kidsplanner.api.user.application.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +20,9 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid UserRequest userRequest) {
-        final Long userId = userService.create(userRequest);
-        final URI uri = URI.create("/users/" + userId);
-        return ResponseEntity.created(uri).build();
+    public ResponseEntity<UserResponse> create(@RequestBody @Valid UserRequest userRequest) {
+        final UserResponse userResponse = userService.create(userRequest);
+        final URI uri = URI.create("/users/" + userResponse.getId());
+        return ResponseEntity.created(uri).body(userResponse);
     }
 }

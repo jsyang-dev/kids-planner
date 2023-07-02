@@ -54,4 +54,8 @@ public abstract class User extends BaseEntity {
         this.birthday = birthday;
         this.userType = userType;
     }
+
+    public boolean isParent() {
+        return userType.isParent();
+    }
 }

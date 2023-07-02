@@ -2,7 +2,6 @@ package info.kidsplanner.api.user.application.dto;
 
 import info.kidsplanner.domain.user.Child;
 import info.kidsplanner.domain.user.Parent;
-import info.kidsplanner.domain.user.User;
 import info.kidsplanner.domain.user.UserType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -39,7 +38,9 @@ public class UserRequest {
     @NotNull
     private final UserType userType;
 
-    public User toEntity() {
+    private final Long parentId;
+
+    public Parent toParent() {
         if (userType.isParent()) {
             return Parent.builder()
                     .email(email)
@@ -49,14 +50,20 @@ public class UserRequest {
                     .birthday(birthday)
                     .build();
         }
+        return null;
+    }
+
+    public Child toChild(Parent parent) {
         if (userType.isChild()) {
-            return Child.builder()
+            final Child child = Child.builder()
                     .email(email)
                     .password(password)
                     .name(name)
                     .phone(phone)
                     .birthday(birthday)
                     .build();
+            child.changeParent(parent);
+            return child;
         }
         return null;
     }

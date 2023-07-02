@@ -1,6 +1,8 @@
 package info.kidsplanner.api.user.application;
 
 import info.kidsplanner.api.user.application.dto.UserRequest;
+import info.kidsplanner.api.user.application.dto.UserResponse;
+import info.kidsplanner.domain.user.Parent;
 import info.kidsplanner.domain.user.User;
 import info.kidsplanner.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +13,19 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
 
-    public Long create(UserRequest userRequest) {
-        final User savedUser = userRepository.save(userRequest.toEntity());
-        return savedUser.getId();
+    public UserResponse create(UserRequest userRequest) {
+        final User user = toUser(userRequest);
+        final User savedUser = userRepository.save(user);
+        return UserResponse.of(savedUser);
+    }
+
+    private User toUser(UserRequest userRequest) {
+        if (userRequest.getUserType().isParent()) {
+            return userRequest.toParent();
+        }
+
+        final Parent parent = (Parent) userRepository.findById(userRequest.getParentId())
+                .orElseThrow(() -> new IllegalArgumentException("부모 사용자 ID를 잘못 입력하였습니다."));
+        return userRequest.toChild(parent);
     }
 }
