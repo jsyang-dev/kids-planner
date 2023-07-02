@@ -63,7 +63,7 @@ public class UserAcceptanceTest extends AcceptanceTest {
     private static UserRequest makeChildRequest(Long parentId) {
         return UserRequest.builder()
                 .userType(UserType.CHILD)
-                .email("parent@email.com")
+                .email("child@email.com")
                 .password("1234")
                 .name("child")
                 .phone("01012345678")
