@@ -3,24 +3,31 @@ package info.kidsplanner.api.user.application.dto;
 import info.kidsplanner.domain.user.Child;
 import info.kidsplanner.domain.user.User;
 import info.kidsplanner.domain.user.UserType;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDate;
 
 @Getter
-@Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserResponse {
-    private Long id;
-    private String email;
-    private String name;
-    private String phone;
-    private LocalDate birthday;
-    private UserType userType;
-    private Long parentId;
+    private final Long id;
+    private final String email;
+    private final String name;
+    private final String phone;
+    private final LocalDate birthday;
+    private final UserType userType;
+    private final Long parentId;
+
+    @Builder
+    private UserResponse(Long id, String email, String name, String phone, LocalDate birthday, UserType userType, Long parentId) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.userType = userType;
+        this.parentId = parentId;
+    }
 
     public static UserResponse of(User user) {
         if (user.isParent()) {
