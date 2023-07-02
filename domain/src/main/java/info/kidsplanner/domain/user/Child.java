@@ -28,13 +28,17 @@ public class Child extends User {
         super(email, password, name, phone, birthday, UserType.CHILD);
     }
 
-    public void changeParent(Parent parent) {
-        final List<Child> childrenOfNewParent = parent.getChildren();
+    public void changeParent(Parent newParent) {
+        if (Objects.isNull(newParent) || Objects.equals(this.parent, newParent)) {
+            return;
+        }
+        
+        final List<Child> childrenOfNewParent = newParent.getChildren();
         if (Objects.nonNull(this.parent)) {
             childrenOfNewParent.remove(this);
         }
 
-        this.parent = parent;
+        this.parent = newParent;
         childrenOfNewParent.add(this);
     }
 }
