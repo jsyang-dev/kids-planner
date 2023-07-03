@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 
 import java.time.LocalDate;
 
+import static info.kidsplanner.user.acceptance.UserStep.*;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("사용자 인수 테스트")
@@ -23,7 +24,7 @@ public class UserAcceptanceTest extends AcceptanceTest {
         final UserRequest parentRequest = makeParentRequest();
 
         // when
-        final ExtractableResponse<Response> response = UserStep.사용자_저장(parentRequest);
+        final ExtractableResponse<Response> response = 사용자_저장(parentRequest);
 
         // then
         사용자_저장됨(response);
@@ -33,11 +34,11 @@ public class UserAcceptanceTest extends AcceptanceTest {
     @Test
     void createChild() {
         // given
-        final UserResponse parentResponse = UserStep.사용자_저장되어_있음(makeParentRequest());
+        final UserResponse parentResponse = 사용자_저장되어_있음(makeParentRequest());
         final UserRequest childRequest = makeChildRequest(parentResponse.getId());
 
         // when
-        final ExtractableResponse<Response> response = UserStep.사용자_저장(childRequest);
+        final ExtractableResponse<Response> response = 사용자_저장(childRequest);
 
         // then
         사용자_저장됨(response);
