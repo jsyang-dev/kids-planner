@@ -1,8 +1,8 @@
-package info.kidsplanner.api.user.application.dto;
+package info.kidsplanner.user.application.dto;
 
-import info.kidsplanner.domain.user.Child;
-import info.kidsplanner.domain.user.User;
-import info.kidsplanner.domain.user.UserType;
+import info.kidsplanner.user.Child;
+import info.kidsplanner.user.User;
+import info.kidsplanner.user.UserType;
 import lombok.Builder;
 import lombok.Getter;
 

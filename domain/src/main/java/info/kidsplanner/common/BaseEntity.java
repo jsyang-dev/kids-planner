@@ -1,4 +1,4 @@
-package info.kidsplanner.domain.common;
+package info.kidsplanner.common;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

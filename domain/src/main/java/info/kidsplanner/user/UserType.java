@@ -1,4 +1,4 @@
-package info.kidsplanner.domain.user;
+package info.kidsplanner.user;
 
 public enum UserType {
     PARENT, CHILD;

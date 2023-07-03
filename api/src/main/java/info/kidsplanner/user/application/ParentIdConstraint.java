@@ -1,4 +1,4 @@
-package info.kidsplanner.api.user.application;
+package info.kidsplanner.user.application;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

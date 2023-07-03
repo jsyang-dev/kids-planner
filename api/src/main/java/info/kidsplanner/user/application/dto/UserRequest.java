@@ -1,9 +1,9 @@
-package info.kidsplanner.api.user.application.dto;
+package info.kidsplanner.user.application.dto;
 
-import info.kidsplanner.api.user.application.ParentIdConstraint;
-import info.kidsplanner.domain.user.Child;
-import info.kidsplanner.domain.user.Parent;
-import info.kidsplanner.domain.user.UserType;
+import info.kidsplanner.user.Child;
+import info.kidsplanner.user.Parent;
+import info.kidsplanner.user.UserType;
+import info.kidsplanner.user.application.ParentIdConstraint;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

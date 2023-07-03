@@ -1,10 +1,10 @@
-package info.kidsplanner.api.user.application;
+package info.kidsplanner.user.application;
 
-import info.kidsplanner.api.user.application.dto.UserRequest;
-import info.kidsplanner.api.user.application.dto.UserResponse;
-import info.kidsplanner.domain.user.Parent;
-import info.kidsplanner.domain.user.User;
-import info.kidsplanner.domain.user.UserRepository;
+import info.kidsplanner.user.Parent;
+import info.kidsplanner.user.User;
+import info.kidsplanner.user.UserRepository;
+import info.kidsplanner.user.application.dto.UserRequest;
+import info.kidsplanner.user.application.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package info.kidsplanner.api.user.application;
+package info.kidsplanner.user.application;
 
-import info.kidsplanner.api.user.application.dto.UserRequest;
+import info.kidsplanner.user.application.dto.UserRequest;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

@@ -1,4 +1,4 @@
-package info.kidsplanner.domain.user;
+package info.kidsplanner.user;
 
 import lombok.AccessLevel;
 import lombok.Builder;

@@ -1,6 +1,6 @@
-package info.kidsplanner.domain.user;
+package info.kidsplanner.user;
 
-import info.kidsplanner.domain.common.BaseEntity;
+import info.kidsplanner.common.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

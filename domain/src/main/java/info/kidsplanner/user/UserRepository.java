@@ -1,4 +1,4 @@
-package info.kidsplanner.domain.user;
+package info.kidsplanner.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
