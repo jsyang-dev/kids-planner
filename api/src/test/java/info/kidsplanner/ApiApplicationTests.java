@@ -1,4 +1,4 @@
-package info.kidsplanner.api;
+package info.kidsplanner;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

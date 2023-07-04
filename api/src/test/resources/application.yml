@@ -1,0 +1,21 @@
+spring:
+  config:
+    import: "optional:configserver:"
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:tc:mysql:8://testDB
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: TRACE
+    org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor: DEBUG

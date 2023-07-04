@@ -17,7 +17,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     // db
-    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
 
     // rest docs
     asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.5.RELEASE'
@@ -25,6 +27,9 @@ dependencies {
 
     // test
     testImplementation 'io.rest-assured:rest-assured:4.5.1'
+    testImplementation "org.testcontainers:testcontainers:1.18.3"
+    testImplementation "org.testcontainers:junit-jupiter:1.18.3"
+    testImplementation "org.testcontainers:mysql:1.18.3"
 
     // module
     implementation project(':domain')
