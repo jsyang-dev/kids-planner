@@ -13,11 +13,11 @@ import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("공휴일 인수 테스트")
 public class HolidayAcceptanceTest extends AcceptanceTest {
-    @DisplayName("공휴일을 생성한다.")
+    @DisplayName("공휴일 목록을 생성한다.")
     @Test
-    void createParent() {
+    void createHolidays() {
         // given
-        final HolidayRequest holidayRequest = makeHolidayRequest();
+        final HolidayRequest holidayRequest = createHolidayRequest();
 
         // when
         final ExtractableResponse<Response> response = 공휴일_생성(holidayRequest);
@@ -30,7 +30,7 @@ public class HolidayAcceptanceTest extends AcceptanceTest {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
     }
 
-    private HolidayRequest makeHolidayRequest() {
+    private HolidayRequest createHolidayRequest() {
         return HolidayRequest.builder()
                 .year(2023)
                 .build();
