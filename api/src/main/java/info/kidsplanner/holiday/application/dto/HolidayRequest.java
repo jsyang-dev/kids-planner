@@ -1,21 +1,20 @@
 package info.kidsplanner.holiday.application.dto;
 
 import info.kidsplanner.holiday.domain.HolidayCondition;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Getter
-@Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class HolidayRequest {
-    @NotNull
+    @Positive
     private int year;
 
     public HolidayCondition toHolidayCondition() {
