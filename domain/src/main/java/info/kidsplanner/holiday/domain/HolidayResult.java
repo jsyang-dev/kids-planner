@@ -1,6 +1,5 @@
 package info.kidsplanner.holiday.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -63,7 +62,6 @@ public class HolidayResult {
 
     @Getter
     public static class Items {
-        @JsonProperty("item")
         private List<Item> item;
     }
 
