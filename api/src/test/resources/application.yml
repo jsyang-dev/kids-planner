@@ -15,6 +15,18 @@ spring:
     enabled: true
     baseline-on-migrate: true
 
+app:
+  public-data:
+    connection:
+      domain: http://apis.data.go.kr
+      connection-timeout: 1000
+      response-timeout: 2000
+      retry-max-attempts: 0
+      retry-max-delay: 500
+    holiday:
+      path: /B090041/openapi/service/SpcdeInfoService/getRestDeInfo
+      service-key: XQIRNsqPxWnJCLc6bRwj1ZBDJ2qPqU9QhiseMdL9ETWxJN0ZwuGBTkWYzh4Hi9Zq4Ov8z24OQRuE8sp40r%2BXFA%3D%3D
+
 logging:
   level:
     org.hibernate.type.descriptor.sql: TRACE
