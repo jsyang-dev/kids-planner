@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
@@ -28,7 +29,9 @@ public class UserController {
     }
 
     private static ResponseEntity<UserResponse> createResponseEntity(UserResponse userResponse) {
-        final URI location = URI.create(String.format("%s/%s", USER_URI, userResponse.getId()));
+        final URI location = UriComponentsBuilder.fromUriString(USER_URI)
+                .pathSegment("{userId}")
+                .build(userResponse.getId());
         return ResponseEntity.created(location).body(userResponse);
     }
 }
