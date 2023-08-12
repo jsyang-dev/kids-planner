@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserResponse create(UserRequest userRequest) {
+    public UserResponse createUser(UserRequest userRequest) {
         final User user = toUser(userRequest);
         final User savedUser = userRepository.save(user);
         return UserResponse.of(savedUser);

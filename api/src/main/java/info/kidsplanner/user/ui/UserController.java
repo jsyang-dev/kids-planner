@@ -21,8 +21,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public Mono<ResponseEntity<UserResponse>> create(@RequestBody @Valid UserRequest userRequest) {
-        final UserResponse userResponse = userService.create(userRequest);
+    public Mono<ResponseEntity<UserResponse>> createUser(@RequestBody @Valid UserRequest userRequest) {
+        final UserResponse userResponse = userService.createUser(userRequest);
         final URI uri = URI.create("/users/" + userResponse.getId());
         return Mono.just(ResponseEntity.created(uri).body(userResponse));
     }

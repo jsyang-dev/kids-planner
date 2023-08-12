@@ -44,7 +44,7 @@ public class UserDocumentation extends Documentation {
                 .userType(UserType.CHILD)
                 .parentId(1L)
                 .build();
-        given(userService.create(any())).willReturn(userResponse);
+        given(userService.createUser(any())).willReturn(userResponse);
 
         FieldDescriptor[] requestFieldDescriptors = {
                 fieldWithPath("email").description("이메일(로그인 계정)"),
