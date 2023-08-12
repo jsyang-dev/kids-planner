@@ -9,6 +9,7 @@ import lombok.Getter;
 import java.time.LocalDate;
 
 @Getter
+@Builder
 public class UserResponse {
     private final Long id;
     private final String email;
@@ -17,17 +18,6 @@ public class UserResponse {
     private final LocalDate birthday;
     private final UserType userType;
     private final Long parentId;
-
-    @Builder
-    private UserResponse(Long id, String email, String name, String phone, LocalDate birthday, UserType userType, Long parentId) {
-        this.id = id;
-        this.email = email;
-        this.name = name;
-        this.phone = phone;
-        this.birthday = birthday;
-        this.userType = userType;
-        this.parentId = parentId;
-    }
 
     public static UserResponse of(User user) {
         if (user.isParent()) {

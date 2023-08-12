@@ -18,12 +18,17 @@ import java.net.URI;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
+    public static final String USER_URI = "/users";
     private final UserService userService;
 
     @PostMapping
     public Mono<ResponseEntity<UserResponse>> createUser(@RequestBody @Valid UserRequest userRequest) {
-        final UserResponse userResponse = userService.createUser(userRequest);
-        final URI uri = URI.create("/users/" + userResponse.getId());
-        return Mono.just(ResponseEntity.created(uri).body(userResponse));
+        return userService.createUser(userRequest)
+                        .map(UserController::createResponseEntity);
+    }
+
+    private static ResponseEntity<UserResponse> createResponseEntity(UserResponse userResponse) {
+        final URI location = URI.create(String.format("%s/%s", USER_URI, userResponse.getId()));
+        return ResponseEntity.created(location).body(userResponse);
     }
 }
