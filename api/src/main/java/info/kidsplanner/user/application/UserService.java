@@ -7,16 +7,17 @@ import info.kidsplanner.user.application.dto.UserRequest;
 import info.kidsplanner.user.application.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserResponse create(UserRequest userRequest) {
-        final User user = toUser(userRequest);
-        final User savedUser = userRepository.save(user);
-        return UserResponse.of(savedUser);
+    public Mono<UserResponse> createUser(UserRequest userRequest) {
+        return Mono.just(toUser(userRequest))
+                .map(userRepository::save)
+                .map(UserResponse::of);
     }
 
     private User toUser(UserRequest userRequest) {

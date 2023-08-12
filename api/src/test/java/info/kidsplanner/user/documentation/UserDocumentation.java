@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.restdocs.payload.FieldDescriptor;
+import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
 
@@ -44,7 +45,7 @@ public class UserDocumentation extends Documentation {
                 .userType(UserType.CHILD)
                 .parentId(1L)
                 .build();
-        given(userService.create(any())).willReturn(userResponse);
+        given(userService.createUser(any())).willReturn(Mono.just(userResponse));
 
         FieldDescriptor[] requestFieldDescriptors = {
                 fieldWithPath("email").description("이메일(로그인 계정)"),

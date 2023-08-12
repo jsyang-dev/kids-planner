@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
@@ -18,12 +19,19 @@ import java.net.URI;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
+    public static final String USER_URI = "/users";
     private final UserService userService;
 
     @PostMapping
-    public Mono<ResponseEntity<UserResponse>> create(@RequestBody @Valid UserRequest userRequest) {
-        final UserResponse userResponse = userService.create(userRequest);
-        final URI uri = URI.create("/users/" + userResponse.getId());
-        return Mono.just(ResponseEntity.created(uri).body(userResponse));
+    public Mono<ResponseEntity<UserResponse>> createUser(@RequestBody @Valid UserRequest userRequest) {
+        return userService.createUser(userRequest)
+                        .map(UserController::createResponseEntity);
+    }
+
+    private static ResponseEntity<UserResponse> createResponseEntity(UserResponse userResponse) {
+        final URI location = UriComponentsBuilder.fromUriString(USER_URI)
+                .pathSegment("{userId}")
+                .build(userResponse.getId());
+        return ResponseEntity.created(location).body(userResponse);
     }
 }
