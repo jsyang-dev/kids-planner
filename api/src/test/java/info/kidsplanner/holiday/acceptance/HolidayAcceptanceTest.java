@@ -20,13 +20,13 @@ public class HolidayAcceptanceTest extends AcceptanceTest {
         final HolidayRequest holidayRequest = createHolidayRequest();
 
         // when
-        final ExtractableResponse<Response> response = 공휴일_생성(holidayRequest);
+        final ExtractableResponse<Response> response = 공휴일_목록_생성(holidayRequest);
 
         // then
-        공휴일_생성됨(response);
+        공휴일_목록_생성됨(response);
     }
 
-    private void 공휴일_생성됨(ExtractableResponse<Response> response) {
+    private void 공휴일_목록_생성됨(ExtractableResponse<Response> response) {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
     }
 

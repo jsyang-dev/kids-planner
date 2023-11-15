@@ -17,9 +17,6 @@ public class HolidayService {
     public Flux<HolidayResponse> createHolidays(HolidayRequest holidayRequest) {
         return holidayClient.fetchHolidays(holidayRequest.toHolidayCondition())
                 .map(holidayRepository::save)
-                .map(holiday -> HolidayResponse.builder()
-                        .date(holiday.getDate())
-                        .name(holiday.getName())
-                        .build());
+                .map(HolidayResponse::of);
     }
 }
