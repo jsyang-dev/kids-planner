@@ -27,7 +27,7 @@ public class UserAcceptanceTest extends AcceptanceTest {
         final ExtractableResponse<Response> response = 사용자_저장(parentRequest);
 
         // then
-        사용자_저장됨(response);
+        사용자_생성됨(response);
     }
 
     @DisplayName("자녀를 생성한다.")
@@ -41,10 +41,10 @@ public class UserAcceptanceTest extends AcceptanceTest {
         final ExtractableResponse<Response> response = 사용자_저장(childRequest);
 
         // then
-        사용자_저장됨(response);
+        사용자_생성됨(response);
     }
 
-    private void 사용자_저장됨(ExtractableResponse<Response> response) {
+    private void 사용자_생성됨(ExtractableResponse<Response> response) {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
         assertThat(response.header("Location")).isNotBlank();
     }
