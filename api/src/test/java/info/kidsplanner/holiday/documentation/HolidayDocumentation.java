@@ -48,7 +48,7 @@ public class HolidayDocumentation extends Documentation {
                 .build();
 
         // when
-        공휴일_생성(
+        공휴일_목록_생성(
                 givenSpec(
                         "createHolidays",
                         requestFields(requestFieldDescriptors),
