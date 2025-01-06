@@ -20,15 +20,16 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class UserController {
     public static final String USER_URI = "/users";
+
     private final UserService userService;
 
     @PostMapping
     public Mono<ResponseEntity<UserResponse>> createUser(@RequestBody @Valid UserRequest userRequest) {
         return userService.createUser(userRequest)
-                        .map(UserController::createResponseEntity);
+                .map(this::createResponseEntity);
     }
 
-    private static ResponseEntity<UserResponse> createResponseEntity(UserResponse userResponse) {
+    private ResponseEntity<UserResponse> createResponseEntity(UserResponse userResponse) {
         final URI location = UriComponentsBuilder.fromUriString(USER_URI)
                 .pathSegment("{userId}")
                 .build(userResponse.getId());
